@@ -1,0 +1,6 @@
+C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\PhthaloBlueMods\StashItemsToChest\StashItemsToChest\bin\Release\manifest.json
+C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\PhthaloBlueMods\StashItemsToChest\StashItemsToChest\bin\Release\StashItemsToChest.dll
+C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\PhthaloBlueMods\StashItemsToChest\StashItemsToChest\bin\Release\StashItemsToChest.pdb
+C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\PhthaloBlueMods\StashItemsToChest\StashItemsToChest\obj\Release\StashItemsToChest.dll
+C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\PhthaloBlueMods\StashItemsToChest\StashItemsToChest\obj\Release\StashItemsToChest.pdb
+C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\PhthaloBlueMods\StashItemsToChest\StashItemsToChest\obj\Release\StashItemsToChest.csprojResolveAssemblyReference.cache
