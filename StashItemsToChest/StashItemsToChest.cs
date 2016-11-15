@@ -97,6 +97,7 @@ namespace StashItemsToChest
                         if (playerItem.canStackWith(chestItem))
                         {
                             OpenChest.grabItemFromInventory(playerItem, Game1.player);
+                            break;
                         }
                     }
                 }
@@ -106,9 +107,6 @@ namespace StashItemsToChest
         }
     }
 
-
-    //PhthaloBlue: these simple config code I learned from looking thru SprintAndDash mod by speedy.
-    //repo link here: https://gitlab.com/speeder1/SPDSprintAndDashMod
     public class StashItemsToChestConfig : Config
     {
         public Keys stashKey;
