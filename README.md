@@ -12,7 +12,7 @@ This is a simple mod that allows players to quickly stash items in their invento
 2. [SMAPI: +0.40.1](https://github.com/ClxS/SMAPI/releases)
 
 ###Install:  
-1. Get Stardew Valley
+1. Get [Stardew Valley](http://store.steampowered.com/app/413150/) $$$
 2. [Install SMAPI](http://canimod.com/guides/using-mods#installing-smapi)
 3. Unzip the mod folder into Stardew Valley/Mods (just put StashItemsToChest folder into /Mods folder)
 4. Run [SMAPI](http://canimod.com/guides/using-mods#installing-smapi)
