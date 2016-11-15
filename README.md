@@ -9,7 +9,10 @@ This is a simple mod that allows players to quickly stash items in their invento
 1. [Stardew Valley](http://store.steampowered.com/app/413150/)
 2. [SMAPI: +0.40.1](https://github.com/ClxS/SMAPI/releases)
 
-Default hotkey is Tab but you can change hotkey by changing the config.json file.
+###Download [here](https://github.com/lambui/StardewValleyMod_StashItemsToChest/releases)
+
+Default hotkey is Tab but you can change hotkey by changing the config.json file.  
+Check out KeyCode.txt file to find your desirable key code.
 
 This mod is compatible with [Chest Anywhere mod](http://www.nexusmods.com/stardewvalley/mods/518/?).
 
