@@ -26,4 +26,6 @@ Check out KeyCode.txt file to find your desirable key code.
 
 ###Note:  
 This mod is compatible with [Chest Anywhere mod](http://www.nexusmods.com/stardewvalley/mods/518/?).  
-I made this mod because [Smartmod](http://community.playstarbound.com/threads/smapi-smartmod.108104/) stops working with the newest version of Stardew Valley and SMAPI and I find the Stash function is extremely useful to pass up on.
+I made this mod because [Smartmod](http://community.playstarbound.com/threads/smapi-smartmod.108104/) stops working with the newest version of Stardew Valley and SMAPI and I find the Stash function is extremely useful to pass up on.  
+
+Contact me at [buiphuonglamvn@gmail.com](mailto:buiphuonglamvn@gmail.com) regarding whatever.
