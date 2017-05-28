@@ -22,7 +22,7 @@ This is a simple mod that allows players to quickly stash items in their invento
 
 ## Customize:  
 Default hotkey is Tab but you can change hotkey by changing the config.json file.  
-Check out KeyCode.txt file to find your desirable key code.
+See [KeyCode.txt](./KeyCode.txt) to find your desirable key code.
 
 ### Note:  
 This mod is compatible with [Chest Anywhere mod](http://www.nexusmods.com/stardewvalley/mods/518/?).  
