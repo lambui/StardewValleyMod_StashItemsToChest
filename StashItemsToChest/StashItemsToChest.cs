@@ -1,95 +1,86 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StardewValley;
+using StardewValley.Menus;
+using StardewValley.Objects;
 using StardewModdingAPI;
-using System.IO;
 using Microsoft.Xna.Framework.Input;
 
 namespace StashItemsToChest
 {
     public class StashItemsToChest : Mod
     {
+        private KeyboardState lastKeyboardState;
+
         public static StashItemsToChestConfig ModConfig { get; protected set; }
-        public override void Entry(params object[] objects)
+
+        public override void Entry(IModHelper helper)
         {
-            ModConfig = new StashItemsToChestConfig().InitializeConfig(BaseConfigPath);
+            base.Entry(helper);
+
+            ModConfig = helper.ReadConfig<StashItemsToChestConfig>();
             StardewModdingAPI.Events.GameEvents.UpdateTick += UpdateTickEvent;
+
+            lastKeyboardState = Keyboard.GetState();
         }
 
         //PhthaloBlue: these blocks of codes below are from Chest Pooling mod by mralbobo
         //repo link here: https://github.com/mralbobo/stardew-chest-pooling, they are useful so I use them
-        static StardewValley.Objects.Chest getOpenChest()
+        static Chest getOpenChest()
         {
-            if (StardewValley.Game1.activeClickableMenu == null) { return null; }
+            if (Game1.activeClickableMenu == null) return null;
 
-            if (StardewValley.Game1.activeClickableMenu is StardewValley.Menus.ItemGrabMenu)
+            ItemGrabMenu itemGrabMenu = Game1.activeClickableMenu as ItemGrabMenu;
+            if (itemGrabMenu != null)
             {
-                //myLog("it's an item grab");
-                StardewValley.Menus.ItemGrabMenu menu = StardewValley.Game1.activeClickableMenu as StardewValley.Menus.ItemGrabMenu;
-                if (menu.behaviorOnItemGrab != null && menu.behaviorOnItemGrab.Target is StardewValley.Objects.Chest)
+                if (itemGrabMenu.behaviorOnItemGrab != null && itemGrabMenu.behaviorOnItemGrab.Target is Chest)
                 {
-                    return menu.behaviorOnItemGrab.Target as StardewValley.Objects.Chest;
+                    return itemGrabMenu.behaviorOnItemGrab.Target as Chest;
                 }
             }
             else
             {
-                
-                if (StardewValley.Game1.activeClickableMenu.GetType().Name == "ACAMenu")
+                if (Game1.activeClickableMenu.GetType().Name == "ACAMenu")
                 {
-                    dynamic thing = (dynamic)StardewValley.Game1.activeClickableMenu;
+                    dynamic thing = (dynamic)Game1.activeClickableMenu;
                     if (thing != null && thing.chestItems != null)
                     {
-                      
-                        StardewValley.Objects.Chest aChest = new StardewValley.Objects.Chest(true);
+                        Chest aChest = new Chest(true);
                         aChest.items = thing.chestItems;
                         return aChest;
                     }
                 }
-
-                //debugThing(StardewValley.Game1.activeClickableMenu);
             }
             return null;
         }
 
 
         //PhthaloBlue: these are my codes
-        static void UpdateTickEvent(object sender, EventArgs e)
+        void UpdateTickEvent(object sender, EventArgs e)
         {
-            if (ModConfig == null)
+            if(!Game1.game1.IsActive)
                 return;
 
-            if (StardewValley.Game1.currentLocation == null)
+            if (Game1.currentLocation == null)
                 return;
 
             KeyboardState currentKeyboardState = Keyboard.GetState();
-            StashUp(currentKeyboardState);
+            StashUp(this.lastKeyboardState, currentKeyboardState);
+            this.lastKeyboardState = currentKeyboardState;
         }
 
-        static bool isChestFull(StardewValley.Objects.Chest inputChest)
+        static void StashUp(KeyboardState lastKeyboardState, KeyboardState currentKeyboardState)
         {
-            return inputChest.items.Count >= StardewValley.Objects.Chest.capacity;
-        }
-
-        static void StashUp(KeyboardState currentKeyboardState)
-        {
-            if (currentKeyboardState.IsKeyDown(ModConfig.stashKey))
+            // If the stash key was just released.
+            if (lastKeyboardState.IsKeyDown(ModConfig.stashKey) && currentKeyboardState.IsKeyUp(ModConfig.stashKey))
             {
-                List<Item> PlayerInventory = Game1.player.items;
-                StardewValley.Objects.Chest OpenChest = getOpenChest();
-                if (OpenChest == null)
+                Chest OpenChest = getOpenChest();
+                if (OpenChest == null || OpenChest.isEmpty())
                     return;
 
-                if (OpenChest.isEmpty())
-                    return;
-
-                List<Item> OpenChestItemList = OpenChest.items;
-                foreach (Item chestItem in OpenChestItemList)
+                foreach (Item chestItem in OpenChest.items)
                 {
-                    foreach (Item playerItem in PlayerInventory)
+                    foreach (Item playerItem in Game1.player.items)
                     {
                         if (playerItem == null)
                             continue;
@@ -101,20 +92,12 @@ namespace StashItemsToChest
                         }
                     }
                 }
-
-                
             }
         }
     }
 
-    public class StashItemsToChestConfig : Config
+    public class StashItemsToChestConfig
     {
-        public Keys stashKey;
-
-        public override T GenerateDefaultConfig<T>()
-        {
-            stashKey = Keys.Tab;
-            return this as T;
-        }
+        public Keys stashKey = Keys.Tab;
     }
 }
