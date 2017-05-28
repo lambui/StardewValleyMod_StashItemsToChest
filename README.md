@@ -3,22 +3,22 @@
 
 Modder: PhthaloBlue  
 
-This is a simple mod that allows players to quickly stash items in their inventory into opened chest which already has those items.
+This is a simple mod that allows players to quickly stash items in their inventory into opened chest which already has those items.  
 
-![gif](https://github.com/lambui/StardewValleyMod_StashItemsToChest/blob/master/stashitemstochest.gif)
+[Download the latest release from GitHub](./releases/latest) .
+
+![gif](./stashitemstochest.gif)
 
 ## Require:  
 1. [Stardew Valley](http://store.steampowered.com/app/413150/)
-2. [SMAPI: +0.40.1](https://github.com/ClxS/SMAPI/releases)
+2. [SMAPI: +1.13](https://github.com/Pathoschild/SMAPI/releases)
 
 ## Install:  
 1. Get [Stardew Valley](http://store.steampowered.com/app/413150/) $$$
 2. [Install SMAPI](http://canimod.com/guides/using-mods#installing-smapi)
-3. Unzip the mod folder into Stardew Valley/Mods (just put StashItemsToChest folder into /Mods folder)
+3. Download the [latest release](./releases/latest).
+3. Unzip it into the Stardew Valley/Mods folder (just put StashItemsToChest folder into /Mods folder)
 4. Run [SMAPI](http://canimod.com/guides/using-mods#installing-smapi)
-
-
-## Download [here](https://github.com/lambui/StardewValleyMod_StashItemsToChest/releases)
 
 ## Customize:  
 Default hotkey is Tab but you can change hotkey by changing the config.json file.  
